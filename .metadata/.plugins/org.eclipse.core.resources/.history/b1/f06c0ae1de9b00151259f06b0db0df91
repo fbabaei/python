@@ -1,0 +1,5 @@
+class common(object):
+    def __init__(self, *args, **kwargs):
+        self.args1 = args[1]
+        self.args2 = args[2]
+        

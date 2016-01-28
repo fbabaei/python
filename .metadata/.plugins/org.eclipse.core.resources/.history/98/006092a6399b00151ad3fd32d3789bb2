@@ -1,0 +1,20 @@
+#!/usr/local/bin/python
+
+def createNewList(l=[]):
+    print list
+    i = 0
+    print (" Initial Value of i = %s ") % i
+    newlist=[]
+    for ii in list:
+#        if i == ii and list[ii]%2 == 0:
+        if i == ii:
+            print "for loop"
+            newlist.appsnd(list[ii])
+            print i
+            print ii
+            print newlist
+        i += 2
+    return newlist
+l = [1,2,3,4,5,6,7,8,9,12,14,15,16,18]
+newl = createNewList(l)
+print newl

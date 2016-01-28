@@ -1,0 +1,44 @@
+import sys
+
+# Create 2 arrays which will contain independently the subjects and the marks:
+# 1 - Initialize your array containing your 'subjects'
+subjects = []
+# 2 - Initialize your array containing your 'marks'
+marks = []
+
+# Opening file for reading. The path of the file is given in argument
+open_file = open(sys.argv[1], 'r')
+
+for line in open_file:
+    # 'line' is a line in your file
+
+    # We make sure that 'line' is non-empty
+    if line:
+        # for each line in your file, we read something like this: 
+        # subject---marks
+        # We need to split the different information, which are separated by '---'
+        information = line.split('---')
+
+        # 'information' is an array containing 2 values:
+        # 'information[0]' contains the subject
+        # 'information[1]' contains the mark
+
+        # We store each separate information in our arrays 'subjects' and 'marks':
+        subjects.append(information[0])
+        marks.append(information[1])
+
+# When finishing reading the file, we close it    
+open_file.close()
+
+# Now that all the data inside the file has been read, and store in our arrays
+#    we have to use it to create / print it in an HTML table
+
+# Print opening HTML tags -------------------------
+print "<htm><body><table>"
+
+# Print the content of the table, line by line ----
+for i in range(0, len(subjects)):
+    print "<tr><td>"+subjects[i]+"</td><td>"+marks[i]+"</td></tr>"
+
+# Print closing HTML tags -------------------------
+print "</table></body></html>"    

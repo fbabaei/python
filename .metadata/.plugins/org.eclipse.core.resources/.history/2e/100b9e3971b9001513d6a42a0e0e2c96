@@ -1,0 +1,27 @@
+'''
+Created on Jan 12, 2016
+
+@author: Fereydoun
+'''
+
+logfile = "C:\Users\Fereydoun\workspace\projpy\common\oracle\logfile"
+def report(logfile):
+    reportdict = {}
+    with open (logfile) as f:
+        for line in f:
+            ipaddr = line.split(' ')
+#             print ipaddr
+            reportdict.setdefault(ipaddr[2],[]).append(ipaddr[4].rstrip())
+    return reportdict
+def addsort(indict={}):
+    for k, v in indict.items():
+        iplist = k.split('.')
+        print v
+#         print iplist
+        for i in v:
+            print i  
+    
+        
+if __name__ == '__main__':
+    print report(logfile)
+    addsort(report(logfile))

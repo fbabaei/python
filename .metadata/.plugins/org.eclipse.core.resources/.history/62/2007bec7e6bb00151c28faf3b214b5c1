@@ -1,0 +1,15 @@
+'''
+Created on Jan 15, 2016
+
+@author: Fereydoun
+'''
+l = ['abc', 'cde', 'fed', 'cba', 'def', 'edf']
+
+sl = [''.join(sorted(x))for x in l]
+lc = [x for x in sl if sl.count(x)>1]
+lc = list(set(lc))
+# lc = list(set(x for x in sl if sl.count(x)>1))
+          
+if __name__ == '__main__':
+    print sl    
+    print "lc: %s " % lc    

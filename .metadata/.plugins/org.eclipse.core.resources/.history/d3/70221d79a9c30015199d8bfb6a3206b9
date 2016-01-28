@@ -1,0 +1,26 @@
+'''
+Created on Jan 25, 2016
+
+@author: Fereydoun
+'''
+def word_frequency(words):
+    '''
+    returns frequency of words in a list of words
+    '''
+    frequency = {}
+    for w in words:
+        frequency[w] = frequency.get(w,0)+ 1
+    return frequency
+def read_file(filename):
+    return open(filename).read().split()
+
+def main(filename):
+    frequency = word_frequency(read_file(filename))
+    print sorted(frequency)
+    print frequency.has_key('So')
+    for word, count in frequency.items():
+        print word,count
+if __name__ == '__main__':
+    words = ['a','b','v','f','d','a','v','g','d','s','c','g','h','e','s','a','b']
+    print word_frequency(words)
+    main("C:\Users\Fereydoun\workspace\projpy\src\common\infile.txt")

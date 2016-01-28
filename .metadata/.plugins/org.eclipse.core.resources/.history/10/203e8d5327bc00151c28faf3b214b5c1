@@ -1,0 +1,32 @@
+'''
+Created on Jan 15, 2016
+
+@author: Fereydoun
+'''
+l = ['abc', 'cde', 'fed', 'cba', 'def', 'edf', 'kqed']
+ln = [2,5,7,8,9,44,5,66,7,8,99,8,9,8,7,7,64,79,96,97,35,63,23]
+def getSimElemInList(l):
+    sl = [''.join(sorted(x))for x in l]
+    lc = [x for x in sl if sl.count(x)>1]
+    lc = list(set(lc))
+    # lc = list(set(x for x in sl if sl.count(x)>1))
+    return lc 
+def condensed(l):
+    stri = '' 
+    for x in l:
+        stri += x 
+    return ''.join(sorted(list(set(stri))))
+def odds(ln):
+    return filter(lambda x:x%2 != 0, ln)
+def primes(ln):
+    ll = []
+    for p in ln: 
+        if not any(p%i == 0 for i in range(2,p)):
+            ll.append(p)
+    return list(set(sorted(ll)))    
+    
+if __name__ == '__main__':
+    print getSimElemInList(l)
+    print condensed(l)
+    print odds(ln)
+    print primes(ln)

@@ -1,0 +1,26 @@
+'''
+Created on Jan 12, 2016
+
+@author: Fereydoun
+'''
+
+logfile = "C:\Users\Fereydoun\workspace\projpy\common\oracle\logfile"
+def mkdict(logfile):
+    reportdict = {}
+    with open (logfile) as f:
+        for line in f:
+            ipaddr = line.split(' ')
+            reportdict.setdefault(ipaddr[2],[]).append(ipaddr[4].rstrip())
+    return reportdict
+def report(indict={}):
+    for k, v in indict.items():
+        iplist = k.split('.')
+        totaldrops = 0
+        for i in v:
+            if(i == 'drops'):
+                totaldrops += int(i)  
+        print "%s drops total %d packets" %(k, totaldrops)
+
+if __name__ == '__main__':
+#     print report(logfile)
+    report(mkdict(logfile))

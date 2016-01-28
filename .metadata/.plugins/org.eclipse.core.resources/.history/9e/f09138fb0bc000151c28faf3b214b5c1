@@ -1,0 +1,25 @@
+#!/usr/bin/python
+
+'''
+Created on Jan 20, 2016
+
+@author: Fereydoun
+'''
+import os
+import sys
+import getopt
+from os.path import *
+
+directory = sys.argv[1:]
+print directory
+def chkdirtree(directory):
+    s=os.listdir(directory)
+    print s
+    for d in s:
+        if isdir(d):
+            chkdirtree(d)
+        elif isfile(d):
+            print d
+               
+if __name__ == '__main__':
+    chkdirtree(directory)

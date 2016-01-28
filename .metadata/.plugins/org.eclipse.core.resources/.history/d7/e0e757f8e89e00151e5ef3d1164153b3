@@ -1,0 +1,95 @@
+'''
+Created on Dec 6, 2015
+
+@author: Fereydoun
+'''
+import os
+from os.path import exists
+from os import walk
+
+class util(object):
+    '''
+    classdocs
+    '''
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+#         self.L = L
+#         self.start_index = ind 
+    def get_product_of_list(self,L,start_index):
+        print("Beginning L: %s  start_index: %s") % (L,start_index)
+        product_of_list = L[start_index]
+        next_index = start_index+1
+        print("next index before for loop is: %s") % next_index
+        for index, item in enumerate(L[next_index::]):
+            product_of_list = product_of_list*item
+            print(" For loop item: %s _index: %s product_of_list: %s ") % (item, index, product_of_list)
+        return product_of_list        
+    def get_products_of_all_ints_except_at_index(self, L ,start_index):
+        plist = []
+        print("Length of list: %s") % len(L)
+        print("Length of list - start_index: %s") % (len(L)- start_index)
+        
+        for index in range(len(L) - start_index):
+            plist.append(self.get_product_of_list(L, index)) 
+            print plist   
+        return plist
+    def file_access(self, filepath, mode):
+        ''' Check if a file exists and is accessible. '''
+        try:
+            f = open(filepath, mode)
+            f.close()
+        except IOError as e:
+            print e
+            return 1
+        return 0        
+    def file_exists(self, filepath):
+        print"Checking to see if the file exists ..."
+        try:
+            if exists(filepath): print "Found the file"
+            else: print "Missing file ..."
+        except IOError as e:
+            print("File: %s does not exist ... %s" ) % (filepath, e)
+            return e
+        return 0
+    def list_files(self, path):
+        ''' returns a list of names (with extension, without full path) of all files 
+         in folder path '''
+        files = []
+        for name in os.listdir(path):
+            if os.path.isfile(os.path.join(path, name)):
+                files.append(name)
+        return files             
+    def list_dirs_and_files(self, mypath):
+        f = []
+        d = []
+        for (dirpath, dirnames, filenames) in walk(mypath):
+            f.extend(filenames)
+            d.extend(dirnames)
+            break
+        return (f,d)
+
+    def create_table(self, arg):
+        table=['<htm><body><table border="1">']
+        isFile = False
+        if isinstance(arg, file):
+            s = open(arg, 'r')
+            isFile = True
+        else:
+            s = arg
+        for line in s.splitlines():
+            if not line.strip():
+                continue
+            table.append(r'<tr><td>{}</td><td>{}</td></tr>'.format(*line.split('---')))
+        
+        table.append('</table></body></html>')
+        
+        print ''.join(table)
+        if isFile: s.close()
+        outfile = "outfile.html"
+        of = open(outfile, 'w')
+        of.write(table)
+        of.close()
+        return table    

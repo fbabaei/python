@@ -1,0 +1,46 @@
+'''
+Created on Dec 21, 2015
+
+@author: Fereydoun
+'''
+from collections import OrderedDict
+
+fileName = "C:\Users\Fereydoun\workspace\mypy\src\common\Threads\Names2"
+def createDictWordCount(fileName):
+    d = {}
+    with open(fileName) as f:
+        L = []
+        for line in f:
+            L.append(line.rstrip().split(' '))
+#             print line.rstrip().split(' ')
+        L =[w for w1 in L for w in w1]
+#         print L
+    for word in L:  
+        word = word.strip(',')
+        if word in d.keys():
+            d[word] = d[word] + 1
+        else:
+            d[word] = 1
+    d_sorted = OrderedDict(sorted(d.iteritems(), key=lambda t: t[1]))
+    return d_sorted
+def maxValue(d):
+    maxValue = 0 
+    maxKey = 0 
+    md = {}   
+    for k, v in d.iteritems():
+        if maxValue == 0:
+            maxValue = v 
+            maxKey = k
+        elif v > maxValue:
+            maxValue = v 
+            maxKey = k
+            md[maxKey]= maxValue
+#     for k, v in d.iteritems():
+#         if v == maxValue:
+#             md[k] = v
+
+            
+    return(md)          
+if __name__ == '__main__':
+#     print createDictWordCount(fileName)
+    print maxValue(createDictWordCount(fileName))

@@ -1,0 +1,237 @@
+'''
+Created on Jan 16, 2016
+
+@author: Fereydoun
+'''
+from string import lower
+from inspect import ArgInfo
+
+class counter:
+    '''
+    classdocs
+    '''
+    def __init__(self, low, high):
+        '''
+        Constructor
+        '''
+        self.current = low
+        self.high = high
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        if self.current > self.high:
+            raise StopIteration
+        else:
+            self.current += 1
+            return self.current - 1
+class Hello:
+    def __iter__(self):
+        return counter(10, 20)
+def sumer(*args):
+    print type(args)
+    for i in args:
+        if len(args) == 1:
+            print"Number of args: %s " % len(args)
+            if type(i) is str:
+                s = ''
+            elif type(i) is int:
+                s = 0
+            elif type(i) is list:
+                print "Type is list ..."
+                for j in i:
+                    if type(j) is int:
+                        s = 0
+                    elif type(j) is str:
+                        s = ''
+                for j in i:
+                    s += j
+            else:
+                s = ''
+                print "This function accepts str and int types ..."
+        else:
+            if type(i) is str:
+                s = ''
+            elif type(i) is int:
+                s = 0
+            elif type(i) is list:
+                s = []
+            else:
+                print "This function accepts str and int types ..."              
+    
+            for i in args:
+                print i
+                s += i
+    return s
+def productor(*args):
+    for i in args:
+        if(type(i) is float) or (type(i) is int):
+            p = 1
+        else:
+            print "This function accepts int and float types ..."
+    for i in args:
+        p = p*i
+    return p
+def reverse(args):
+    return args[::-1]
+def cumulative_sum(args):
+    csl = []
+    current = 0
+    for i in args:
+        current += i
+        csl.append(current)
+    return csl  
+def cumulative_product(args):
+    cpl = []
+    current = 1
+    for i in args:
+        current = current*i
+        cpl.append(current)
+    return cpl 
+def unique(args):
+    nodup = list(set(args))
+    print nodup
+    uniq = []
+    for x in args:
+        if not (x in uniq):
+            uniq.append(x)
+        else:
+            uniq.remove(x)
+    return uniq
+def dups(args):
+    uni = unique(args)
+#     return [x for x in args if not x in uni or uni.remove(x)]
+    dup = args
+    print uni
+    for x in uni:
+        if x in dup:
+            print x
+            dup.remove(x)
+    return list(set(dup))[::-1]
+def group(arg1, arg2):
+    list1 = []
+    i = 0
+    output = []
+    c = 0
+    while i < len(arg1):
+        list1.append(arg1[i])
+        c += 1
+        i += 1
+        if c == arg2:
+            output.append(list1)
+            list1 = []
+            c = 0 
+    return output
+def lensort(arg):
+    print arg
+    n = len(arg)
+    for i in range(n):
+        for j in range(i+1,n):
+            if len(arg[j])< len(arg[i]):
+                temp = arg[j]
+                arg[j] = arg[i]
+                arg[i] = temp
+    return arg
+def extsort(arg):
+    d = {}
+    for x in arg:
+        x = x.split('.')
+        if x[1] in d.keys():
+            d[x[1]].append(x[0])
+        else:
+            d.setdefault(x[1],[]).append(x[0])
+
+    print d
+    sd = sorted(d.items())
+    print sd
+    sdl = []
+    for k, v in iter(sd):
+        for i in v:
+            sdl.append(i+'.'+k)
+            
+    print sdl
+def reversefile(filename):
+    l=[]
+    with open(filename) as f:
+        for line in f:
+            l.append(line.rstrip())
+    rl= l[::-1]
+    print rl
+    for l in rl:
+        print l
+def head(filename):
+    l = []
+    with open(filename) as f:
+        for line in f:
+            l.append(line.rstrip())
+    h = l[0:2:]
+    for i in h:
+        print i
+def tail(filename):
+    l = []
+    with open(filename) as f:
+        for line in f:
+            l.append(line.rstrip())
+    t = l[:len(l)-4:-1]
+    for i in t:
+        print i 
+def grep(filename, s):
+    l=[]
+    with open(filename) as f:
+        for line in f:
+            l.append(line.rstrip())
+    for i in l:
+        if s in i:
+            print i
+def wraper(filename, n):
+    with open(filename) as f:
+        l = f.readlines()
+        l = str(l)
+    for i in range(0,len(l),30):
+        s=l[0+i:30+i]
+        print s
+            
+def zipper(a,b):
+    z=[(x,y) for x in a for y in b if a.index(x)== b.index(y) ]
+    print z   
+    print zip(a,b)
+
+def square(x):
+    return x*x
+             
+def mapper(func,args):
+    return [func(x) for x in args]
+
+def even(x):
+    return x%2==0
+def filtering(f,l):
+    return[i for i in l if f(i)]
+def triplet(n):
+    return [(a,b,a+b) for a in range(n-1) for b in range(n-1) if a+b in range(n)and a!=b and a!=0 and b!= 0]
+             
+# print ">>>>>>>>>>>> sum: %s" % sumer(['a','b','c'], ['a','b','c'])
+# print ">>>>>>>>>>>> Product: %s" % productor(1.2,2.3,2,1,3,5,7)
+# print reverse('Hello world')
+# print reverse(reverse('Hello world'))
+# print cumulative_sum([1,2,3,4,5,6]) 
+# print cumulative_product([1,2,3,4,5,6,7,8]) 
+# print unique([1,2,3,4,3,2,5,6,4,7])
+# print group([1,5,3,4,3,2,6,7,43,5,4,43], 3)
+# print group(['a','c','d',4,3,'w',6,'abc',43,5,4,43], 3)
+# print lensort(['python', 'perl', 'java', 'c', 'haskell', 'ruby'])
+
+# print extsort(['a.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt', 'x.c'])
+# print head("C:\Users\Fereydoun\workspace\projpy\src\infile.txt")
+# print grep("C:\Users\Fereydoun\workspace\projpy\src\infile.txt", 'She')
+# print wraper("C:\Users\Fereydoun\workspace\projpy\src\infile.txt", 30)
+
+# print zipper([1,2,3],['a','b','c'])
+
+# print filtering(even, [1,3,5,3,6,8,2,10])
+print triplet(5)
+# x = iter(Hello())
+# for i in x:
+#     print i
+    
+
+        

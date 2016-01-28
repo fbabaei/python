@@ -1,0 +1,9 @@
+'''
+Created on Jan 25, 2016
+
+@author: Fereydoun
+'''
+
+print [x for x in range(1,10) if x%2 == 0]
+if __name__ == '__main__':
+    pass

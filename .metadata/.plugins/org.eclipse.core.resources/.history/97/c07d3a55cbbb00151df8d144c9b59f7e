@@ -1,0 +1,22 @@
+'''
+Created on Jan 15, 2016
+
+@author: Fereydoun
+'''
+l = ['abc', 'cde', 'fed', 'cba', 'def', 'edf']
+
+# l = [list(s)for s in l]
+l2 = map(list, l)
+l3 = []
+for l in l2:
+    l3.append(sorted(l))
+n = len(l3)-1
+l4 = []
+print l3
+for i in range(n):
+    for j in range(n-1):
+        if cmp(l3[i], l3[j])== 0:
+            l4.append(l3[j])
+if __name__ == '__main__':
+    print "L4: %s " % l4
+    print "L3: %s " % l3

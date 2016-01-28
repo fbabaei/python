@@ -1,0 +1,16 @@
+'''
+Created on Jan 22, 2016
+
+@author: Fereydoun
+'''
+import threading
+
+def worker(n):
+    """ Thread worker function ..."""
+    print "worker number %s", n
+    return
+threads = []
+for i in range(5):
+    t = threading.Thread(target=worker, args=i)
+    threads.append(t)
+    t.start()

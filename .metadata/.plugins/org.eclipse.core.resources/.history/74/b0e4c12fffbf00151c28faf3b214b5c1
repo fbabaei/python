@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+'''
+Created on Jan 20, 2016
+
+@author: Fereydoun
+'''
+import os
+import sys
+import getopt
+
+def main():
+    for arg in sys.argv[1:]:
+        print arg
+if __name__ == '__main__':
+    main

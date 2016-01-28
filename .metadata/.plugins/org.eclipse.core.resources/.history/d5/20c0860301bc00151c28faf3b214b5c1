@@ -1,0 +1,24 @@
+'''
+Created on Jan 15, 2016
+
+@author: Fereydoun
+'''
+l = ['abc', 'cde', 'fed', 'cba', 'def', 'edf']
+def getSimElemInList(l):
+    sl = [''.join(sorted(x))for x in l]
+    lc = [x for x in sl if sl.count(x)>1]
+    lc = list(set(lc))
+    # lc = list(set(x for x in sl if sl.count(x)>1))
+    return lc 
+stri = '' 
+for x in l:
+    stri += x 
+stri = ''.join(sorted(stri))
+stri = list(set(stri))
+
+          
+if __name__ == '__main__':
+#     print sl    
+#     print "lc: %s " % lc    
+    print getSimElemInList(l)
+    print stri

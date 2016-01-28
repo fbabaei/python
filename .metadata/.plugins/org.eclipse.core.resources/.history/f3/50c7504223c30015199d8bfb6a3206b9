@@ -1,0 +1,141 @@
+'''
+Created on Jan 24, 2016
+
+@author: Fereydoun
+'''
+import time
+import random
+import sys
+
+from common.strsearch import ln
+l = [2,1,4,3,5,6,4]
+x = iter(l)
+# print x
+nl = []
+for i in range(len(l)):
+    nl.append(x.next())
+#     print nl[::-1]
+    ln = nl[::-1]
+
+class zrange_iter():
+    def __init__(self, n):
+        self.n = n
+        self.i = 0
+    
+    def __iter__(self):
+        return self;
+
+    def next(self):
+        if self.i < self.n:
+            i = self.i
+            self.i += 1
+            return i
+        else:
+            raise StopIteration()
+class zrange:
+    def __init__(self, n):
+        self.n = n
+    def __iter__(self):
+        return zrange_iter(self.n)
+'''
+    generators 
+'''
+def yrange(n):
+    i = 0
+    while i < n: 
+        yield i 
+        i += 1  
+# Generator Expressions ...
+a = (x**2 for x in range(100) if x%2 != 0) 
+print "the total number is:", sum(a)
+def infint_generator(start=0):
+    while True:
+        yield start
+        start += 1
+for num in infint_generator(4):
+    print num,
+    if num > 20:
+        break
+print "\n"
+# for i in "O\\\||||///O":
+#     print i,
+#     time.sleep(0.1) 
+# print "\n"  
+# for i in " ( O    O )":
+#     print i,
+# print "\n"  
+# for i in "   /(==)\   ":
+#     print i,
+# print "\n"  
+#     
+# for i in "-  /||||\  -":
+#     print i,
+#     time.sleep(0.1)
+#     
+print "\n"  
+for i in range(5):
+    print '\\',
+    time.sleep(0.2)
+    print '_',
+    time.sleep(0.2)
+    print '/',
+
+for i in reversed('testing'):
+    if 'my' or 'test' in 'testing':
+        newname = 'testing'.replace('test', 'my')
+
+jobtext = 'anacron'
+all_lines = (line for line in open('C:\Users\Fereydoun\workspace\projpy\src\Threads\Names2', 'r'))
+job = (line for line in all_lines if line.find(jobtext) != -1 )
+'''
+ Decorators
+'''
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print "Before Call"
+        result = func(*args, **kwargs)
+        print "After Call"
+        return result
+    return wrapper()
+
+@my_decorator(add)
+def add(a, b):
+    return a+b
+add(2, 3)
+print "=============="
+
+# text = next(job)
+# print text
+#         print i, newname
+# word = input("enter a word: ")
+# print type(word)
+# if 'Hi' or 'Hello' in word:
+#     print 'Hello to you too ...'
+#     word = raw_input('How can I help you? ')
+
+
+if __name__ == '__main__':
+#     print nl, ln
+#     print zip(ln,nl)
+#     z = zrange(5)
+#     print list(z)
+#     zz = zrange_iter(7)
+#     print list(zz)
+#     print list(z)
+#     print list(zz)
+    y = yrange(10)
+    li = list(y)
+#     print li
+#     print sum(li)
+    s = 0
+#     print y
+    for i in li:
+#        time.sleep(0.5)
+        s += i
+#         print "Here is the total after >>>:", i, "....", "Total = ", s, "after adding: ", i
+        time.sleep(0.1)
+#     for n in range(len(list(y))):
+#         print n
+#         print y.next()
+# print sum(a)
+

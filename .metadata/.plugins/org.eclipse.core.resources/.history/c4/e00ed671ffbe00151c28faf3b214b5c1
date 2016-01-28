@@ -1,0 +1,41 @@
+'''
+Created on Jan 19, 2016
+
+@author: Fereydoun
+'''
+
+class iterators(object):
+    '''
+    classdocs
+    '''
+    def __init__(self, l):
+        self.l = l
+    def __iter__(self):
+        return reverse_iter(self.l)
+
+class reverse_iter():
+    def __init__(self,l):
+        self.l = l
+        self.rl = l[::-1]
+        self.i = 1
+        print rl
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        if self.i < len(self.l):
+            i = self.i
+            self.i -= 1
+            return self.rl[i] 
+        else:
+            raise StopIteration()
+        '''
+        Constructor
+        '''
+if __name__ == '__main__':
+    l = [1,2,4,3,5,3,6,7,3]
+    it = reverse_iter(l)
+    for i in range(len(l)):
+        print it.next()  
+      
+              

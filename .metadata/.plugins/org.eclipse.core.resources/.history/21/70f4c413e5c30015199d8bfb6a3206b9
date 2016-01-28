@@ -1,0 +1,26 @@
+'''
+Created on Jan 25, 2016
+
+@author: Fereydoun
+'''
+
+print [x for x in range(1,10) if x%2 == 0]
+
+def f(i):
+    if i%3==0 and i%5== 0: 
+        print 'Euclid','Euler'
+    elif i%3 == 0:
+        print 'Euclid'
+    elif i%5 == 0:
+        print 'Euler'
+    else:
+        print i
+def chk(g):
+    grade = {'A':'Excellent','B':'Well Done', 'C':'You passed', 'D':'Better try again', 'F':'You failed'}
+    if grade.has_key(g):
+        print "Your grade is: ", grade[g] 
+    else:
+        print "Invalid Grade"  
+if __name__ == '__main__':
+    f(125001)
+    chk('D')

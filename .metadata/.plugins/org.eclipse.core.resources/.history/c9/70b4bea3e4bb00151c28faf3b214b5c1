@@ -1,0 +1,20 @@
+'''
+Created on Jan 15, 2016
+
+@author: Fereydoun
+'''
+l = ['abc', 'cde', 'fed', 'cba', 'def', 'edf']
+
+sl = [''.join(sorted(x))for x in l]
+# l = [list(s)for s in l]
+# l2 = map(list, l)
+l3 = []
+l4 = []
+# for l in l2:
+#     l3.append(''.join(sorted(l)))
+# l4 = list(set(x for x in l3 if l3.count(x)>1))
+          
+if __name__ == '__main__':
+    print "L3: %s " % l3    
+    print "L4: %s " % l4    
+    print sl

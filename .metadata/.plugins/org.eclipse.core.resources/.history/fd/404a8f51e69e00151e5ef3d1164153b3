@@ -1,0 +1,28 @@
+'''
+Created on Dec 6, 2015
+
+@author: Fereydoun
+'''
+from Myutil import util
+l = [5,2,3,4,5,6]
+util_obj = util()
+# prod_of_list = util_obj.get_product_of_list(l, 1)
+# ll = util_obj.get_products_of_all_ints_except_at_index(l, 1)
+# print("Product output: %s ") % prod_of_list
+# NewList = util_obj.get_products_of_all_ints_except_at_index(l, 2)
+# if __name__ == '__main__':
+#     print ("Running this test ...")
+if not util_obj.file_exists("C:\Users\Fereydoun\NTUSER.DAT"): print "File exists ..."
+else: print "Test Failed ... Can't find the file ..."
+files = util_obj.list_files("C:\Users\Fereydoun")
+for f in files:
+    print f
+(f,d)=util_obj.list_dirs_and_files("C:\Users\Fereydoun")
+# for i in f:
+#     print i
+# print(">>>>>>>>>>>>> DIRECTORIES <<<<<<<<<<<<")
+# for i in d:
+#     print i
+for i, ii in zip(f,d):
+    print (i, ii)
+util_obj.create_table("input.txt")
